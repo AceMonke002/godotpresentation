@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7unwgietljqa"]
+
+[ext_resource type="PackedScene" uid="uid://7u77g63glrgd" path="res://character.tscn" id="1_murjp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ugmm"]
+albedo_color = Color(0, 0.560784, 0.576471, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7e0ed"]
+
+[sub_resource type="Environment" id="Environment_w8ryh"]
+
+[node name="Test World" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6ugmm")
+mesh = SubResource("PlaneMesh_7e0ed")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w8ryh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.294507, 0.955649, 0, -0.955649, 0.294507, 0, 13.9291, 0)
+shadow_enabled = true
+
+[node name="Character" parent="." instance=ExtResource("1_murjp")]
